@@ -25,8 +25,8 @@ class BaseHandler {
       );
   }
 
-  appendAttachmentIcon() {
-    const _elements = document.getElementsByClassName("ql-attachment");
+  appendAttachmentUploadIcon() {
+    const _elements = document.getElementsByClassName("ql-attachmentupload");
 
     if (_elements.length > 0) {
       let node = document.createElement("svg");
@@ -38,9 +38,52 @@ class BaseHandler {
     }
   }
 
+  appendImageUploadIcon() {
+    const _elements = document.getElementsByClassName("ql-imageupload");
+
+    if (_elements.length > 0) {
+      let node = document.createElement("svg");
+      node.innerHTML = Helpers.imageIconHTML();
+      const _element = _elements[0];
+      if (!_element) return;
+
+      if (_element?.children.length <= 0) _elements[0].appendChild(node);
+    }
+  }
+
+  appendVideoUploadIcon() {
+    const _elements = document.getElementsByClassName("ql-videoupload");
+
+    if (_elements.length > 0) {
+      let node = document.createElement("svg");
+      node.innerHTML = Helpers.videoIconHTML();
+      const _element = _elements[0];
+      if (!_element) return;
+
+      if (_element?.children.length <= 0) _elements[0].appendChild(node);
+    }
+  }
+
+  changeVideoIcon() {
+    const _elements = document.getElementsByClassName("ql-video");
+
+    if (_elements.length > 0) {
+      let node = document.createElement("svg");
+      node.innerHTML = Helpers.youtubeIconHTML();
+      const _element = _elements[0];
+      if (!_element) return;
+
+      _element.innerHTML = ""; //Remove existing children
+      _element.appendChild(node);
+    }
+  }
+
   applyForToolbar() {
     var toolbar = this.quill.getModule("toolbar");
-    this.appendAttachmentIcon();
+    this.appendAttachmentUploadIcon();
+    this.appendImageUploadIcon();
+    this.appendVideoUploadIcon();
+    this.changeVideoIcon();
 
     this.loading = document.getElementById(
       `${Constants.ID_SPLIT_FLAG}.QUILL-LOADING`
