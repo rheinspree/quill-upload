@@ -98,16 +98,17 @@ class BaseHandler {
     let _accpepted;
     switch(this.handler){
       case "imageupload":
-        _accpepted = "image";
+        _accpepted = "image/*";
         break;
       case "videoupload":
-        _accpepted = "video";
+        _accpepted = "video/*";
         break;
       case "attachmentUpload":
         _accpepted = "*";
         break;
     }
-      this.handler === "attachment" ? "*" : `${this.handler}/*`;
+    console.debug("accepting:");
+    console.debug(_accpepted);
     this.range = this.quill.getSelection();
     this.fileHolder = document.createElement("input");
     this.fileHolder.setAttribute("type", "file");
