@@ -94,8 +94,21 @@ class BaseHandler {
   }
 
   selectLocalFile() {
-    const _accpepted =
-      this.handler === "attachment" ? "*" : `${this.handler}/*`;
+
+    let _accpepted;
+    switch(this.handler){
+      case "imageupload":
+        _accpepted = ".gif,.jpg,.jpeg,.tiff,.png,.webp,.jfif";
+        break;
+      case "videoupload":
+        _accpepted = ".mp4,.m4a,.3gp,.f4a,.m4b,.m4r,.f4b,.mov,.flv,.avi,.ogg";
+        break;
+      case "attachmentUpload":
+        _accpepted = "*";
+        break;
+    }
+    console.debug("accepting:");
+    console.debug(_accpepted);
     this.range = this.quill.getSelection();
     this.fileHolder = document.createElement("input");
     this.fileHolder.setAttribute("type", "file");
