@@ -98,10 +98,10 @@ class BaseHandler {
     let _accpepted;
     switch(this.handler){
       case "imageupload":
-        _accpepted = "image/*";
+        _accpepted = ".gif,.jpg,.jpeg,.tiff,.png,.webp,.jfif";
         break;
       case "videoupload":
-        _accpepted = "video/*";
+        _accpepted = ".mp4,.m4a,.3gp,.f4a,.m4b,.m4r,.f4b,.mov,.flv,.avi,.ogg";
         break;
       case "attachmentUpload":
         _accpepted = "*";
