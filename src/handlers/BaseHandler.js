@@ -107,8 +107,6 @@ class BaseHandler {
         _accpepted = "*";
         break;
     }
-    console.debug("accepting:");
-    console.debug(_accpepted);
     this.range = this.quill.getSelection();
     this.fileHolder = document.createElement("input");
     this.fileHolder.setAttribute("type", "file");
