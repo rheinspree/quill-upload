@@ -15,9 +15,6 @@ class AttachmentHandler extends BaseHandler {
   insertFileToEditor(url) {
     const el = document.getElementById(this.handlerId);
     if (el) {
-      el.removeAttribute("id");
-      el.classList.remove(Constants.QUILL_UPLOAD_HOLDER_CLASS_NAME);
-
       if (url) {
         const _filename = url?.split("/").pop();
 
@@ -26,6 +23,10 @@ class AttachmentHandler extends BaseHandler {
           el.firstElementChild.textContent = _filename;
         }
       }
+
+      el.removeAttribute("id");
+      el.removeAttribute("href");
+      el.classList.remove(Constants.QUILL_UPLOAD_HOLDER_CLASS_NAME);
     }
   }
 
